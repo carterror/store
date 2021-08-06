@@ -1,0 +1,155 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+body{
+  background-color: rgb(235, 233, 233);
+}
+nav ul a,
+nav .brand-logo {
+  color: rgb(150, 150, 150);
+}
+
+.nav-wrapper ul li a {
+
+  color: #fff;
+
+}
+
+.dropdown-content li {
+  transition: .6s;
+}
+
+.dropdown-content li:hover {
+  background-color: rgba(0, 0, 0, 0.180) !important;
+  transition: .6s;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+@media only screen and (min-width : 992px) {
+  .carro {
+    display: none;
+  }
+}
+
+.back-to-top{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+  font-size: x-large;
+}
+
+.back-to-top i{
+  font-size: 50px;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.breadcrumb {
+  transition: .6s;
+  margin: 0px 0px 0px 5px;
+}
+
+.breadcrumb:hover {
+  color: #26a69a; 
+}
+
+.card-image a img{
+transition: .6s;
+}
+
+.card-image a img:hover{
+  transform: scale(1.2);
+  opacity: .8;
+}
+
+.Productos div div{
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.514);
+  height: 100px;
+  color: #26a69a;
+  font-size: 50px;
+}
+
+.thumb  {
+  position: relative;
+
+}
+
+.thumb #icon{
+  position: absolute;
+  background-color: #fafafa;
+  border-radius: 5px;
+  bottom: 1px;
+  right: 1px;
+  z-index: 55;
+ 
+}
+.thumb #icon i{
+  color: #26a69a;
+  transition: .6s;
+  }
+
+.thumb #icon i:hover{
+  color: #26a6999d;
+}
+
+.thumb img{
+  border: 2px solid #26a69a;
+  transition: .6s;
+}
+
+.thumb img:hover{
+  opacity: .8;
+  transform: scale(1.1)rotate(4deg);
+}
+
+.editor p{
+  padding: 0px;
+  margin: 0px 10px;
+}

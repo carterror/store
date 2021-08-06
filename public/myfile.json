@@ -1,0 +1,6 @@
+HTTP/1.0 400 Bad Request
+Cache-Control: no-cache, private
+Content-Type:  application/json
+Date:          Mon, 19 Jul 2021 22:11:26 GMT
+
+[{"id":"01","name":"Olivia Mason","designation":"System Architect"},{"id":"02","name":"Jennifer Laurence","designation":"Senior Programmer"},{"id":"03","name":"Medona Oliver","designation":"Office Manager"}]
