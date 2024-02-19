@@ -20,8 +20,23 @@ class CardsController extends Controller
     public function index()
     {
         $cards = Card::paginate(6);
+        $categorys = Category::all();
+        return view('admin.cards.index', compact('cards', 'categorys'));
+    }
 
-        return view('admin.cards.index', compact('cards'));
+    public function buscar(Request $request)
+    {
+        $cards = Card::where('name', 'LIKE', '%'.$request->nombre.'%')->paginate(100);
+        $categorys = Category::all();
+
+        return view('admin.cards.index', compact('cards', 'categorys'));
+    }
+
+    public function filter($category)
+    {
+        $cards = Card::where('type', $category)->paginate(100);
+        $categorys = Category::all();
+        return view('admin.cards.index', compact('cards', 'categorys'));
     }
 
     public function create()
@@ -32,7 +47,7 @@ class CardsController extends Controller
         return view('admin.cards.create', compact('categorys'));
 
     }
-    
+
     public function store(Request $request)
     {
 
@@ -75,7 +90,7 @@ class CardsController extends Controller
     public function edit(Card $card)
     {
         $card = Card::with(['cat'])->find($card->id);
-        
+
         $categorys = Category::all();
 
         return view('admin.cards.edit', compact('categorys', 'card'));
@@ -101,7 +116,7 @@ class CardsController extends Controller
         if ($card->save()) {
             return redirect()->route('cards')->with(['icon' => 'small mdi-action-done green-text'])->with(['type' => 'green-text'])->with(['message' => 'Producto actualizado con éxito']);
         }
-        
+
     }
 
     public function photo(Card $card, Request $request)
@@ -125,20 +140,20 @@ class CardsController extends Controller
 
             $foto = $upload_path.'/'.$file_name;
             $thumb = $upload_path.'/t_'.$file_name;
-    
+
             if(fileExists($foto)): File::delete($foto); endif;
             if(fileExists($thumb)): File::delete($thumb); endif;
 
             $request->photo->storeAs('/', $filename, 'uploads');
 
             $manager = new ImageManager(array('driver' => 'gd'));
-    
+
             $image = $manager->make($final_file)->fit(500, 300);
-    
+
             $image->save($upload_path.'/t_'.$filename);
 
             return back()->with(['icon' => 'small mdi-action-delete blue-text'])->with(['type' => 'blue-text'])->with(['message' => 'Producto Actualizado']);
-        
+
         endif;
     }
 
@@ -184,7 +199,7 @@ class CardsController extends Controller
 
             //return back()->with(['icon' => 'small mdi-action-settings-ethernet blue-text'])->with(['type' => 'blue-text'])->with(['message' => 'Producto en estado '.$message]);
         }
-       
+
     }
 
     public function gallery($id)
@@ -237,10 +252,10 @@ class CardsController extends Controller
 
         if(fileExists($foto)): File::delete($foto); endif;
         if(fileExists($thumb)): File::delete($thumb); endif;
-        
+
         if($card->delete()):
             return back()->with(['icon' => 'small mdi-action-delete blue-text'])->with(['type' => 'blue-text'])->with(['message' => 'Foto eliminada con éxito']);
         endif;
     }
-    
+
 }

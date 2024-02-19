@@ -12,7 +12,7 @@ Carrito
                 <div class="col s12" >
                     <h5><i class="mdi-action-shopping-cart small left"></i>Carrito</h5>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col s12" style="border-bottom: 1px solid black; overflow: auto;">
@@ -28,9 +28,9 @@ Carrito
                         </thead>
                         <tbody>
                             @foreach ($product as $buy)
-                            
+
                             <tr class="product-{{$buy->id}}">
-                                <td colspan="2"><span class="inventario">{{$productos->where('card_id', $buy->id)->first()->inventario}}</span>x {{$buy->name}}</td> 
+                                <td colspan="2"><span class="inventario">{{$productos->where('card_id', $buy->id)->first()->inventario}}</span>x {{$buy->name}}</td>
                                 <td><span class="total">{{$buy->price*$productos->where('card_id', $buy->id)->first()->inventario}}</span> {{$config->current}}</td>
                                 <td>
                                   <a href="{{route('add', [$carrito->id, $buy->id])}}" class="in_car btn" style="padding: 0px 15px;" ><i class="mdi-image-exposure-plus-1 small"></i></a>
@@ -46,22 +46,22 @@ Carrito
                         </tr>
                         </tbody>
                         <tfoot>
-                           
+
                         </tfoot>
                       </table>
-                      
                 </div>
-                
+
             </div>
+            {!! Form::open(['url' => route('order')]) !!}
             @if ($domi->count())
-            <div class="row compra" style="padding: 10px; margin-top: 15px;">
+            <div class="row" style="padding: 10px; margin-top: 15px;">
 
               <ul class="collection with-header grey lighten-5">
                 <li class="collection-header grey lighten-5"><h5>Domicilios</h5></li>
                 @foreach ($domi as $d)
-                    
-                <li class="collection-item grey lighten-5"><i class="mdi-communication-location-on tiny left"></i> {{$d->address}}</li>
-
+                    <li class="collection-item grey lighten-5"><input type="radio" id="{{$d->id}}" name="domicilio" value="{{$d->id}}">
+                        <label for="{{$d->id}}"><i class="mdi-communication-location-on tiny left"></i> {{$d->address}} - ${{$d->price}}</label><br>
+                    </li>
                 @endforeach
               </ul>
             </div>
@@ -69,10 +69,11 @@ Carrito
 
             <div class="row compra" style="padding: 10px; margin-top: 15px;">
               @if ($total>0)
+
                     <div class="col s12">
                         <h5><i class="mdi-action-shopping-cart small left"></i>Completar</h5>
                     </div>
-                    {!! Form::open(['url' => route('order')]) !!}
+
             </div>
                     <div class="row form-compra" style="padding: 5px 10px;">
                         <div class="col s12">
@@ -93,8 +94,13 @@ Carrito
                             </div>
                           </div>
                         </div>
-                        <div class="col s5">
-                          <button type="submit" class="waves-effect waves-light btn grey-text text-lighten-5" style="">Comprar</button>
+                        <div class="col s12">
+                            @if ($config->paypal)
+                                <button type="submit" class="waves-effect waves-light btn btn-large grey-text text-lighten-5" style="">Pagar al recibir</button>
+                            @endif
+                            @if ($config->inperson)
+                                <a href="{{route('pay')}}" class="waves-effect waves-light grey-text text-lighten-5 myButton0a" style="float: right !important; "><span class="paypal5">Pagar Ahora!</span> <span class="paypal1">Pay</span><span class="paypal2">Pal</span><span class="paypal3">.me</span></a>
+                            @endif
                       </div>
                       </div>
 
@@ -104,11 +110,11 @@ Carrito
                   <div class="col s12">
                       <h5 class="red-text text-accent-3"><i class="mdi-action-shopping-cart small left"></i>Carrito Vacio</h5>
                   </div>
-                
+
                 @endif
               </div>
             </div>
-        
+
         </div>
     </div>
 

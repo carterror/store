@@ -25,6 +25,7 @@ class CreateTableConfig extends Migration
             $table->string("tg")->nullable();
             $table->text("descript")->nullable();
             $table->text("descript2")->nullable();
+
             $table->timestamps();
         });
     }

@@ -59,7 +59,7 @@
                   <div class="row">
                     <div class="col s12">
                       <label for="editor">Descripción</label>
-                      <textarea id="editor" name="descripcion1">{{$card->description_pre}}</textarea>
+                      <textarea id="editor" name="descripcion1">{!!$card->description_pre!!}</textarea>
                     </div>
                   </div>
                 </div>

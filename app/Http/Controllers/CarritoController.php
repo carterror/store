@@ -54,13 +54,13 @@ class CarritoController extends Controller
         if ($product > 0) {
 
             $product = Carrito_Card::where('carrito_id', $carrito->id)->where('card_id', $request->product_id)->first();
-            
+
             $product->inventario++;
 
             $product->save();
 
         }else{
-            
+
             Carrito_Card::create([
                 'card_id' => $request->product_id,
                 'carrito_id' => $carrito->id
@@ -124,13 +124,13 @@ class CarritoController extends Controller
     {
         $price = Card::find($product_id)->price;
         $product = Carrito_Card::where('carrito_id', $carrito_id)->where('card_id', $product_id)->first()->inventario;
-        
-        
+
+
 
         if ($product > 1) {
 
             $product = Carrito_Card::where('carrito_id', $carrito_id)->where('card_id', $product_id)->first();
-            
+
             $product->inventario--;
 
             $product->save();
@@ -146,7 +146,7 @@ class CarritoController extends Controller
 
         $carrito = Carrito::findOrCreateBySessionId($carrito_id);
         $total = $carrito->total();
-        
+
             return response()->json([
                 'products_count' => Carrito_Card::productsCount($carrito_id),
                 'id' => $product,
@@ -156,7 +156,7 @@ class CarritoController extends Controller
                 'type' => 'green-text',
                 'icon' => 'small mdi-action-done green-text'
             ]);
-        
+
 
         //return back()->with(['icon' => 'small mdi-action-done green-text'])->with(['type' => 'green-text'])->with(['message' => 'Eliminado del Carrito']);;
 
@@ -215,14 +215,14 @@ class CarritoController extends Controller
                 ];
 
         $json = json_encode($array);
-	
-        $hs = File::get(public_path('hash'));
-        $hs = str_replace("\n", "", $hs);
-        $fspath = getcwd()."/../../messages/".$hs.'/'.$details->name.'_'.$details->created_at->format('U').'.'.$date->format('u').'.json';
-        $fs = fopen($fspath, "w");
-        fwrite($fs, $json);
-        fclose($fs);
-       
+
+        // $hs = File::get(public_path('hash'));
+        // $hs = str_replace("\n", "", $hs);
+        // $fspath = getcwd()."/../../messages/".$hs.'/'.$details->name.'_'.$details->created_at->format('U').'.'.$date->format('u').'.json';
+        // $fs = fopen($fspath, "w");
+        // fwrite($fs, $json);
+        // fclose($fs);
+
         $productos="";
         foreach ($product as $p) {
             $i = Carrito_Card::where('carrito_id', $p->pivot->carrito_id)->where('card_id', $p->pivot->card_id)->first();
@@ -242,7 +242,7 @@ class CarritoController extends Controller
         Mail::to($recipient)->send(new TestMail($array));
 
         $carritos = $carrito->customId;
-        
+
         return view('buys.index' , compact('carritos', 'details', 'config'));
     }
 }

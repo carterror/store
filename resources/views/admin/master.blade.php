@@ -20,7 +20,36 @@
     <link rel="stylesheet" href="{{ asset('dist/css/materialize.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/fancybox/jquery.fancybox.css?v='.time()) }}">
-    
+    <style>
+      .disabled {
+        pointer-events: none;
+      }
+      .search-wrapper input#search {
+            color: #000 !important;
+            font-size: 14px;
+            font-weight: 200;
+            width: 50%;
+            height: 40px;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0 15px 0 10px;
+            border: 0;
+        }
+        .search-wrapper button {
+            border: none;
+            color: black;
+            background-color: transparent;
+            font-size: 30px;
+            position: absolute;
+            z-index: 999;
+            margin-left: -2%;
+        }
+        .search-wrapper button:hover {
+            color: greenyellow;
+            transition: 2s;
+        }
+    </style>
   </head>
   <body>
     <header>
@@ -41,7 +70,7 @@
         </li>
         </form>
       </ul>
-      
+
       <nav class="blue-grey darken-4">
         <div class="nav-wrapper">
           <ul class="right">
@@ -88,10 +117,10 @@
     </header>
     <main>
 
-      @section('content') 
+      @section('content')
       @show
-      
-    </main>    
+
+    </main>
     {{-- <footer class="page-footer" style="background-color: transparent;">
 
       <div class="footer-copyright blue-grey darken-4">
@@ -102,9 +131,9 @@
       </div>
     </footer> --}}
     <!--  Scripts-->
-    
+
     <script src="{{ asset('dist/js/jquery.min.js') }}"></script>
-    
+
     {{-- <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }
     </script> --}}
 
@@ -116,7 +145,7 @@
     <!-- Twitter Button -->
     {{-- <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> --}}
 
-   
+
 
     <!--  Google Analytics  -->
     {{-- <script>

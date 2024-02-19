@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
-    
+
     protected $fillable= [
         "name",
         "product_pag",
@@ -20,5 +20,9 @@ class Setting extends Model
         "tg",
         "descript",
         "descript2",
+        "color1",
+        "color2",
+        "paypal",
+        "inperson",
     ];
 }

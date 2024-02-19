@@ -60,7 +60,7 @@ Categorias
                             <tr>
                                 <td>{{$category->name}}</td>
                                 <td>
-                                    <a href="{{route('category.delete', $category->id)}}" class="btn tooltipped" style="padding: 0px 15px;" data-position="top" data-delay="50" data-tooltip="Eliminar"><i class="mdi-action-delete small"></i></a>
+                                    <a href="{{route('category.delete', $category->id)}}" class="btn tooltipped deleter" style="padding: 0px 15px;" data-position="top" data-delay="50" data-tooltip="Eliminar"><i class="mdi-action-delete small"></i></a>
                                 </td>
                             </tr>
                           @endforeach
@@ -74,7 +74,7 @@ Categorias
                 
             </div>
             <div class="row">
-                {{ $categorys->links() }}
+                {{ $categorys->links('vendor.pagination.materiallize') }}
             </div>
            
 

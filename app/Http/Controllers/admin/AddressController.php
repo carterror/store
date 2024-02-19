@@ -16,7 +16,7 @@ class AddressController extends Controller
 
         return view('admin.address.index', compact('addresses'));
     }
-    
+
     public function store(Request $request)
     {
 
@@ -26,6 +26,7 @@ class AddressController extends Controller
 
         $address = Address::create([
             'address' => $request->name,
+            'price' => $request->price,
         ]);
 
         return back()->with(['icon' => 'small mdi-action-done green-text'])->with(['type' => 'green-text'])->with(['message' => 'Domicilio creado con éxito']);

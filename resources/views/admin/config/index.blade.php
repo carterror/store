@@ -77,22 +77,29 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 m6">
                       <textarea id="descript" name="descript"class="materialize-textarea">{{$config->descript}}</textarea>
                       <label for="descript">Descripción 1</label>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 m6">
                       <textarea id="descript2" name="descript2" class="materialize-textarea">{{$config->descript2}}</textarea>
                       <label for="descript2">Descripción 2</label>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 m6">
                       <textarea id="phone" name="phone" class="materialize-textarea">{{$config->phone}}</textarea>
                       <label for="phone">Contacto</label>
                     </div>
+                    <div class="input-field col s12 m6">
+                        <span style="display: block; color: #9e9e9e;">Pagos</span>
+
+                        <input id="pp" name="pp" type="checkbox" class="validate" @if ($config->paypal) checked @endif>
+                        <label for="pp" style="margin-right: 20px">PayPal</label>
+
+                        <input id="per" name="per" type="checkbox" class="validate" @if ($config->inperson) checked @endif>
+                        <label for="per">Pago al recibir</label>
+                      </div>
                   </div>
                 </div>
               </div>

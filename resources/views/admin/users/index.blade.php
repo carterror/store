@@ -44,7 +44,7 @@
                                 <td>{{$user->puntos}}</td>
                                 <td>
                                     <a href="" class="btn tooltipped" style="padding: 0px 15px;" data-position="top" data-delay="50" data-tooltip="Editar"><i class="mdi-action-done small"></i></a>
-                                    <a href="{{route('users.delete', $user->id)}}" class="btn tooltipped" style="padding: 0px 15px;" data-position="top" data-delay="50" data-tooltip="Eliminar"><i class="mdi-action-delete small"></i></a>
+                                    <a href="{{route('users.delete', $user->id)}}" class="btn tooltipped deleter" style="padding: 0px 15px;" data-position="top" data-delay="50" data-tooltip="Eliminar"><i class="mdi-action-delete small"></i></a>
                                 </td>
                             </tr>
                           @endforeach

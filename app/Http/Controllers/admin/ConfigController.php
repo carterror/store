@@ -42,12 +42,38 @@ class ConfigController extends Controller
         $hash = File::get(public_path('hash'));
 
         return view('admin.config.index', compact('config', 'hash'));
-        
+
+    }
+
+    public function tema(Request $request)
+    {
+        $config = Setting::find(1);
+
+        $config->color1 = $request->color1;
+        $config->color2 = $request->color2;
+
+        if ($config->save()):
+
+            return back()->with(['icon' => 'small mdi-action-done green-text'])->with(['type' => 'green-text'])->with(['message' => 'Configuraciones actualizadas con éxito']);
+
+        endif;
     }
 
     public function store(Request $request)
-    {   
+    {
         $config = Setting::find(1);
+
+        if ($request->pp) {
+            $config->paypal = true;
+        } else {
+            $config->paypal = false;
+        }
+
+        if ($request->per) {
+            $config->inperson = true;
+        } else {
+            $config->inperson = false;
+        }
 
         $config->name = $request->name;
         $config->product_pag = $request->product_pag;
@@ -62,7 +88,7 @@ class ConfigController extends Controller
 
 
         if ($config->save()):
-            
+
             return back()->with(['icon' => 'small mdi-action-done green-text'])->with(['type' => 'green-text'])->with(['message' => 'Configuraciones actualizadas con éxito']);
 
         endif;
@@ -70,8 +96,8 @@ class ConfigController extends Controller
 
     public function fondo()
     {
-
-        return view('admin.config.fondos');
+        $config = Setting::find(1);
+        return view('admin.config.fondos', compact('config'));
 
     }
 

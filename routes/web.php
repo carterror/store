@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\CategotyController;
 use App\Http\Controllers\BuysController as ControllersBuysController;
 use App\Mail\TestMail;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -30,13 +31,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () { 
+Route::get('/', function () {
     return redirect()->route('dashboard', 'all');
 });
 
-
-
-
+Route::get('/paypal/pay', [PaymentController::class, 'payWithPayPal'])->name('pay');
+Route::get('/paypal/status', [PaymentController::class, 'payPalStatus'])->name('execute');
 
 require __DIR__.'/auth.php';
 
@@ -62,7 +62,7 @@ Route::post('order', [CarritoController::class, 'create'])->name('order');
 // Route::get('/correo', function () {
 
 //     $data = ['name' => 'Para Rami'];
-    
+
 //     Mail::to('carlos.bramila98@gmail.com')->send(new TestMail($data));
 
 //     return "Correo enviado";
@@ -71,7 +71,7 @@ Route::post('order', [CarritoController::class, 'create'])->name('order');
 
 
 Route::prefix('/admin')->middleware('auth')->group(function(){
-    
+
     Route::get('/', [ConfigController::class, 'index'])->name('admin');
 
     // Route::get('/users', [UsersController::class, 'index'])->name('users');
@@ -92,6 +92,8 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::get('/addresses/{id}/delete', [AddressController::class, 'delete'])->name('addresses.delete');
 
     Route::get('/cards', [CardsController::class, 'index'])->name('cards');
+    // Route::get('/cards/buscar', [CardsController::class, 'buscar'])->name('buscar');
+    Route::get('/cards/{id}/filter', [CardsController::class, 'filter'])->name('filter');
     Route::get('/cards/create', [CardsController::class, 'create'])->name('cards.create');
     Route::get('/cards/{card}/edit', [CardsController::class, 'edit'])->name('cards.edit');
     Route::post('/cards/create', [CardsController::class, 'store'])->name('cards.store');
@@ -112,6 +114,7 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::post('/config/update', [ConfigController::class, 'store'])->name('config.update');
     Route::get('/fondos', [ConfigController::class, 'fondo'])->name('fondos');
     Route::post('/fondos', [ConfigController::class, 'fondos'])->name('fondos.store');
+    Route::post('/tema', [ConfigController::class, 'tema'])->name('tema');
 
 
 });

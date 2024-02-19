@@ -36,6 +36,7 @@ class UsersController extends Controller
 
     public function delete(Recipient $recipient)
     {
+   
         if($recipient->delete()):
             return back()->with(['icon' => 'small mdi-action-delete blue-text'])->with(['type' => 'blue-text'])->with(['message' => 'Usuario eliminada con éxito']);
         endif;

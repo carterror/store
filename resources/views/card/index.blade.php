@@ -14,7 +14,7 @@
             <h2 style="margin: 10px !important;"> {{$card->name}}</h2>
             <div style="width: 100px; height: 5px; background-color: #bdbdbd; margin: 10px;"></div>
             <h4 style="padding: 10px;"> {{$card->description}}</h4>
-            <span class="editor"> {!! $card->description_pre !!}</span>
+            <h5 style="padding: 10px;"> {!!$card->description_pre!!}</h5>
         </div>
     </div>
 

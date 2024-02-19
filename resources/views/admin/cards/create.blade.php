@@ -70,11 +70,6 @@
                       
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                        
-                    </div>
-                  </div>
                 </div>
               </div>
             

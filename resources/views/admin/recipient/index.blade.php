@@ -64,7 +64,7 @@ Destinatarios
                                     <td>{{$recipient->name}}</td>
                                     <td>{{$recipient->email}}</td>
                                     <td>
-                                        <a href="{{route('recipient.delete', $recipient)}}" class="btn tooltipped" style="padding: 0px 15px;" data-position="top" data-delay="50" data-tooltip="Eliminar"><i class="mdi-action-delete small"></i></a>
+                                        <a href="{{route('recipient.delete', $recipient)}}" class="btn tooltipped deleter" style="padding: 0px 15px;" data-position="top" data-delay="50" data-tooltip="Eliminar"><i class="mdi-action-delete small"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

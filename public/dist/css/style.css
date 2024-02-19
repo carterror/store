@@ -148,8 +148,3 @@ transition: .6s;
   opacity: .8;
   transform: scale(1.1)rotate(4deg);
 }
-
-.editor p{
-  padding: 0px;
-  margin: 0px 10px;
-}

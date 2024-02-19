@@ -12,13 +12,36 @@
   {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
 
   <!-- Styles -->
-  
+
   <link rel="stylesheet" href="{{ asset('dist/css/materialize.css') }}">
   <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('dist/fancybox/jquery.fancybox.css?v='.time()) }}">
 
   {{-- <link rel="stylesheet" href="{{ asset('dist/app.css') }}"> --}}
-  
+  <style>
+    .disabled {
+      pointer-events: none;
+    }
+    .btn, .btn-large {
+        background-color: {{$config->color2}} !important;
+    }
+
+    .blue-grey.darken-4 {
+        background-color: {{$config->color1}} !important;
+    }
+
+    {}
+    .paypal1 {color: #003087; font-size: 22px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style: italic;}
+    .paypal2 {color: #009CDE; font-size: 22px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style: italic;}
+    .paypal3 {color: #000000; font-size: 17px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; }
+    .paypal4 {color: #fafafa; font-size: 17px; font-family: Arial, Helvetica, sans-serif; }
+    .paypal5 {color: #3c3c3c; font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style: italic; }
+    .myButton0a {width: 250px; background-color:#FFC439; border-radius:4px; display:inline-block; cursor:pointer; padding:12px; text-align:center; text-decoration:none; margin-bottom: 5px; }
+    .myButton0a:hover {background-color:#fcba1f; }
+    .myButton0a:active {position:relative; top:1px; }
+  </style>
+
+
 </head>
 <body>
   <div class="navbar-fixed">
@@ -26,21 +49,21 @@
     <div class="nav-wrapper container">
 
       <a id="logo-container" href="{{ url('/dashboard/all') }}" class="logo" style="padding-left: 10px;">{{$config->name}}</a>
-      
+
       <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url('/dashboard/all') }}" ><i class="mdi-action-home left"></i>Inicio</a></li>
                 <li><a href="{{ route('carrito.index') }}" ><i class="mdi-action-shopping-cart left"></i><span class="carrito-red red accent-4" style="padding: 3px;">{{$carrito->productSize()}}</span></a></li>
       </ul>
 
       <a href="{{ route('carrito.index') }}" class="carro btn-large waves-effect waves-light blue-grey darken-4" style="position: fixed; top: 2px; right: 5px; border-radius: 5px !important; box-shadow: none;"><i class="mdi-action-shopping-cart left"></i> <span class="carrito-red red accent-4" style="padding: 3px;">{{$carrito->productSize()}}</span></a>
-      
+
       <ul id="nav-mobile" class="side-nav blue-grey darken-4" style="opacity: .9;">
         <li><a id="logo-container" href="{{ url('/dashboard/all') }}">{{$config->name}}</a></li>
-        
+
         <li><a id="logo-container" href="{{ url('/dashboard/all') }}"><i class="mdi-action-home left"></i>Inicio</a></li>
         <li><a id="logo-container" href="{{ route('carrito.index') }}"><i class="mdi-action-shopping-cart left"></i> Carrito <span class="carrito-red badge red accent-4 grey-text text-lighten-5" style="font-size: large; ">{{$carrito->productSize()}}</span></a></li>
       </ul>
-      
+
       <a href="#" data-activates="nav-mobile" class="button-collapse grey-text text-lighten-5"><i class="mdi-navigation-menu"></i></a>
     </div>
   </nav>
@@ -68,25 +91,25 @@
         <div class="section">
 
       <!--   Icon Section   -->
-      
-      @section('content') 
+
+      @section('content')
       @show
-      
+
 
     </div>
   </div>
 </div>
- 
+
   <div class="parallax-container valign-wrapper">
-    @if (!is_null($config->descript2))
     <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light" style="background-color: rgba(0, 0, 0, 0.685); border-radius: 5px; padding: 10px;">{{$config->descript2}}</h5>
-        </div>
+      @if (!is_null($config->descript2))
+        <div class="container">
+          <div class="row center">
+            <h5 class="header col s12 light" style="background-color: rgba(0, 0, 0, 0.685); border-radius: 5px; padding: 10px;">{{$config->descript2}}</h5>
+          </div>
       </div>
+      @endif
     </div>
-    @endif
     <div class="parallax"><img src="{{asset('uploads/banner2.jpg?v='.time())}}" alt="Unsplashed background img 3"></div>
   </div>
 
