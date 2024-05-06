@@ -7,7 +7,7 @@
 
 Cuenta con un carrito facilitando el pago de servicios o productos a través de la propia web.
 
-``` *Se entrega junto a la aplicación GoDjango Notify ```
+``` *Se integra con la aplicación GoDjango Notify ```
 
 - Contiene una sola sección principal: “Inicio” , aquí se mostrarán todos los productos en venta con su
 información correspondiente (fotos/precio/tallas, etc.). El cliente podrá realizar una búsqueda directa
